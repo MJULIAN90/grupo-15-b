@@ -43,7 +43,7 @@ AJAX se basa en un montón de tecnologías. No tienes que ser un experto en toda
 
 Piensa en toda tu aplicación web como un restaurante de comida rápida. Tú eres el cajero, la persona en las primeras líneas. Manejas las **solicitudes** de los cliente
 
-![no-box](/_src/assets/04-Ajax/image-1.png)
+![no-box](../_src/assets/04-Ajax/image-1.png)
 
 Si miras este diagrama, puedo ver tres trabajos separados que deben hacerse.
 
@@ -53,7 +53,7 @@ Si miras este diagrama, puedo ver tres trabajos separados que deben hacerse.
 
 Sin embargo, si no tuvieras AJAX, sólo se te permitiría procesar un pedido a la vez de principio a fin! Tendrías que tomar el pedido... luego cobrar al cliente... luego sentarte ahí sin hacer nada mientras la gente en la cocina cocina cocina la comida... y luego seguir esperando mientras el equipo de preparación de la comida la empaqueta. Sólo podrías tomar el siguiente pedido después de todo eso.
 
-![no-box](/_src/assets/04-Ajax/image-2.png)
+![no-box](../_src/assets/04-Ajax/image-2.png)
 
 Eso es una mala experiencia para el usuario! Ya no podrías llamarlo "comida rápida". En su lugar, tendrías que llamarlo "comida mediocre"... o algo así.
 
@@ -63,7 +63,7 @@ Los clientes pueden seguir haciendo pedidos, y no es necesario sentarse allí mi
 
 Esto ciertamente introduce cierta complejidad. Ahora tienes múltiples especializaciones dentro del restaurante. Además, los pedidos se están manejando a ritmos diferentes. Pero, crea una experiencia de usuario mucho mejor.
 
-![no-box](/_src/assets/04-Ajax/image-3.png)
+![no-box](../_src/assets/04-Ajax/image-3.png)
 
 Probablemente has  visto esto en acción en un restaurante. Una persona está trabajando en la máquina de papas fritas. Una persona está manejando la parrilla. Cuando llega un pedido, el cajero puede comunicarse instantáneamente con ambos y volver a tomar los pedidos.
 
@@ -104,7 +104,7 @@ Por las papas fritas, puede que sólo necesitemos saberlo:
 1. El tamaño de las patatas
 2. El precio
 
-![no-box](/_src/assets/04-Ajax/image-4.png)
+![no-box](../_src/assets/04-Ajax/image-4.png)
 
 Veamos un ejemplo de un combo de: una hamburguesa con queso con una Pepsi que cuesta 6 dólares. Esto es lo que parece en JavaScript.
 
@@ -173,7 +173,7 @@ let meal = {
 };$.get('/comboMeal', meal);
 ```
 
-![no-box](/_src/assets/04-Ajax/image-5.png)
+![no-box](../_src/assets/04-Ajax/image-5.png)
 
 También necesitamos un disparador para este. Esta solicitud se activa cuando los clientes responden a tus preguntas como cajero antes de que les entregues la comida. No hay una forma conveniente de representar las preguntas y respuestas con JavaScript. Así que voy a crear otro evento de clic para el botón con la clase "respuesta".
 
@@ -187,7 +187,7 @@ $('.answer').click(function(){
 });
 ```
 
-![no-box](/_src/assets/04-Ajax/image-6.png)
+![no-box](../_src/assets/04-Ajax/image-6.png)
 
 Este también necesita una función de devolución de llamada, porque vamos a recibir lo que estaba contenido en las tres comidas compuestas en el orden 191. Podemos recibir esos datos a través de un parámetro de *datos* en nuestra llamada de retorno.
 
@@ -211,7 +211,7 @@ $('.answer').click(function(){
 
 El producto final, *datos*, contendría el contenido de las tres comidas combinadas, teóricamente. ¡Depende de cómo esté escrito en el backend!
 
-![no-box](/_src/assets/04-Ajax/image-7.png)
+![no-box](../_src/assets/04-Ajax/image-7.png)
 
 ## Eventos en javascript
 
@@ -260,7 +260,7 @@ Este código ahora se ejecutará cada vez que se active el evento  `click` en el
 
 Antes que nada miremos un dibujo que representa el runtime de v8 (el runtime que usa chrome y node)
 
-![img](/_src/assets/04-Ajax/image-8.png)
+![img](../_src/assets/04-Ajax/image-8.png)
 
 Como se puede ver en la imagen, el engine consiste de dos elementos principales
 
@@ -294,7 +294,7 @@ printSquare(5);
 
 **Los estados del call stack serían:**
 
-![img](/_src/assets/04-Ajax/image-9.png)
+![img](../_src/assets/04-Ajax/image-9.png)
 
 Y que pasa si tenemos una función de esta manera:
 
@@ -306,11 +306,11 @@ function foo() {
 foo();
 ```
 
-![img](/_src/assets/04-Ajax/image-10.png)
+![img](../_src/assets/04-Ajax/image-10.png)
 
 Lo que sucedería es que en algún momento la cantidad de funciones llamadas excede el tamaño del stack , por lo que el navegador mostrará este error:
 
-![img](/_src/assets/04-Ajax/image-13.png)
+![img](../_src/assets/04-Ajax/image-13.png)
 
 Pero qué pasa si llamamos a un timeout o hacemos un request con AJAX a un servidor. Al ser un solo thread, hay un solo call stack y por lo tanto solo se puede ejecutar una cosa a la vez. Es decir el navegador debería congelarse, no podría hacer más nada, no podría renderizar, hasta que la llamada termine de ejecutarse. Sin embargo esto no es asi, javascript es asincrónico y no bloqueante. Esto es gracias al Event Loop.
 
@@ -320,7 +320,7 @@ Algo interesante acerca de javascript, o mejor dicho de los runtimes de javascri
 
 Por lo tanto este es el gráfico que muestra una visión más abarcativa de javascript. En este se puede ver el runtime, más las Web APIs y el callback queue del cual hablaremos más adelante.
 
-![img](/_src/assets/04-Ajax/image-11.png)
+![img](../_src/assets/04-Ajax/image-11.png)
 
 Al haber un solo thread es importante no escribir codigo bloqueante para la UI no quede bloqueada.
 
@@ -363,7 +363,7 @@ Luego de terminar la cuenta regresiva del setTimeout() (que no es ejecutada en e
 
 El flujo en imágenes de todo este trabalenguas seria:
 
-![img](/_src/assets/04-Ajax/image-12.gif)
+![img](../_src/assets/04-Ajax/image-12.gif)
 
 De esta manera se logra que el código sea no bloqueante, en vez de un setTimeout podría ser una llamada a un servidor, en donde habría que esperar que se procese nuestra solicitud y nos envíe una respuesta , el cual sería tiempo ocioso si no contáramos con callbacks asincronicas, de modo que el runtime pueda seguir con otro código. Una vez que la respuesta haya llegado del servidor y Call Stack esté vacío, se podrá procesar la respuesta (mediante la función pasada como callback ) y hacer algo con ella , por ejemplo mostrarla al usuario.
 
