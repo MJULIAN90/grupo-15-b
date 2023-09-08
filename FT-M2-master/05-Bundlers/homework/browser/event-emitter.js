@@ -1,6 +1,4 @@
-(function () {
-  window.EventEmitter = EventEmitter;
-
+// (function () {
   // our EventEmitter constructor function
   function EventEmitter() {
     this.subscribers = {};
@@ -37,4 +35,11 @@
       listener.apply(null, remainingArgs);
     });
   };
-})();
+// })();
+
+// forma de commans js
+// module.exports = EventEmitter;
+
+// forma de es6
+export const hola  = "hola2";
+export default EventEmitter;

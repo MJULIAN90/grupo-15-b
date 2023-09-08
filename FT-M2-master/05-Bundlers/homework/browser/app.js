@@ -1,6 +1,16 @@
-(function () {
-  var whiteboard = window.whiteboard;
-  var socket = window.io(window.location.origin);
+// (function () {
+
+  // var whiteboard = window.whiteboard;
+  // forma commans js
+  // var whiteboard = require("./whiteboard.js");
+  // forma es6
+  import whiteboard from "./whiteboard.js";
+
+  // var socket = window.io(window.location.origin);
+  // forma commans js
+  // var socket = require('socket.io-client');
+  // forma es6
+  import socket from 'socket.io-client';
 
   socket.on("connect", function () {
     console.log("Connected!");
@@ -22,4 +32,4 @@
   whiteboard.on("draw", function (start, end, color) {
     socket.emit("draw", start, end, color);
   });
-})();
+// })();
