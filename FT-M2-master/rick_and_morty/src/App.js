@@ -1,8 +1,9 @@
 import './App.css';
-import Card from './components/Card.jsx';
-import Cards from './components/Cards.jsx';
-import SearchBar from './components/SearchBar.jsx';
-import characters, { Rick } from './data.js';
+
+//  Cuando en nuestra carpeta tenemos un archivo llamado index.js, no hace falta especificar el nombre del archivo, ya que por defecto, si no se especifica, se importa el index.js
+import Cards from './components/Cards';
+import SearchBar from './components/SearchBar';
+import characters from './data.js';
 
 function App() {
    return (

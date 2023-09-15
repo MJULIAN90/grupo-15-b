@@ -1,0 +1,11 @@
+.titulo {
+  color: purple;
+  position: absolute;
+  bottom: 15px;
+  right: 35px;
+}
+
+.origin {
+  width: 80%;
+  text-align: center;
+}
