@@ -1,4 +1,16 @@
-export default function SearchBar(props) {
+import React, { useState } from 'react';
+
+export default function SearchBar({onSearch}) {
+
+   const [id, setId] = useState('');
+
+   const handleChange = (e) => setId(e.target.value);
+
+   const handleClick = () => {
+      onSearch(id)
+      setId('')
+   }
+
    return (
       <div 
          style={{
@@ -11,7 +23,11 @@ export default function SearchBar(props) {
             alignItems: 'center',
             width: '100%',
          }}>
-         <input type='search' 
+         <input 
+            type='search'
+            value={id}
+            onChange={handleChange}
+            // onChange={(e) => setId(e.target.value)}
             style={{
                height: 40,
                width: 250,
@@ -20,7 +36,8 @@ export default function SearchBar(props) {
             }}
          />
          <button 
-            onClick={props.onSearch}
+            // onClick={()=> onSearch(id)}
+            onClick={handleClick}
             style={{
                height: 40,
                width: 100,

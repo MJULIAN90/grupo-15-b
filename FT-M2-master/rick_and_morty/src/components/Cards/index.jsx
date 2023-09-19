@@ -2,7 +2,7 @@ import Card from "../Card";
 
 import container from "./styles.module.css";
 export default function Cards(props) {
-  const { characters } = props;
+  const { characters, onClose } = props;
 
   return (
     <div className={container.container}>
@@ -42,7 +42,7 @@ export default function Cards(props) {
             gender={gender}
             origin={origin.name}
             image={image}
-            onClose={() => window.alert("Emulamos que se cierra la card")}
+            onClose={onClose}
           />
         )
       )}

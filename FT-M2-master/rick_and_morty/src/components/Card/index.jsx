@@ -19,6 +19,7 @@ export default function Card({
   gender,
   origin,
   image,
+  id,
 }) {
 
   // const {
@@ -34,7 +35,7 @@ export default function Card({
   return (
     <CardContainer>
       <button 
-        onClick={onClose}
+        onClick={() => onClose(id)}
         style={styles.button}
 
       >
