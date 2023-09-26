@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import Nav from '../Nav';
 
-export default function SearchBar({onSearch, logout}) {
+export default function SearchBar({onSearch}) {
 
    const [id, setId] = useState('');
 
@@ -33,9 +33,10 @@ export default function SearchBar({onSearch, logout}) {
             // onChange={(e) => setId(e.target.value)}
             style={{
                height: 40,
-               width: 250,
+               width: 400,
                borderRadius: 10,
                marginRight: 20,
+               border: 'none',
             }}
          />
          <button 
@@ -50,11 +51,6 @@ export default function SearchBar({onSearch, logout}) {
          >
             Agregar
          </button>
-
-      <Link to={'/about'}>
-        <button onClick={logout}>Logout</button>
-      </Link>
-         {/* <Nav logout={logout} /> */}
       </div>
    );
 }

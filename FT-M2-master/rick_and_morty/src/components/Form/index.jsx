@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { validator } from "./validations";
+import { Button, Input, Title } from "../../styles";
 
 const Form = ({loginUser}) => {
   // const [email, setEmail] = useState('');
@@ -36,10 +37,27 @@ const Form = ({loginUser}) => {
   
 
   return (
-    <div>
-      <form onSubmit={handleSumit}>
-        <label htmlFor='email'>Email</label>
-        <input
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '20%',
+      height: '100vh',
+    }}>
+      <form 
+        onSubmit={handleSumit}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: 20,
+          width: '100%',
+      }}
+        >
+        <Title htmlFor='email'>Email</Title>
+        <Input
           type='text'
           name='email'
           placeholder='Email'
@@ -50,8 +68,8 @@ const Form = ({loginUser}) => {
 
         {errors.email && <p>{errors.email}</p>}
 
-        <label htmlFor='password'>password</label>
-        <input
+        <Title htmlFor='password'>password</Title>
+        <Input
           type='password'
           name='password'
           placeholder='password'
@@ -62,7 +80,7 @@ const Form = ({loginUser}) => {
 
         {errors.password && <p>{errors.password}</p>}
 
-        <button type='sumit'>Submit</button>
+        <Button type='sumit'>Submit</Button>
       </form>
     </div>
   );

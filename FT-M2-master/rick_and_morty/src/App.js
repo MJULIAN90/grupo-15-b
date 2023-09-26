@@ -5,7 +5,7 @@ import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 //  Cuando en nuestra carpeta tenemos un archivo llamado index.js, no hace falta especificar el nombre del archivo, ya que por defecto, si no se especifica, se importa el index.js
 import Cards from "./components/Cards";
 import Nav from "./components/Nav";
-import SearchBar from "./components/SearchBar";
+// import SearchBar from "./components/SearchBar";
 // import characters from './data.js';
 
 import "./App.css";
@@ -30,7 +30,7 @@ function App() {
   //   logout,
   //   pathname,
   // } = useApp();
-  
+
   const { pathname } =  useLocation();
   const navigate = useNavigate();
   const [characters, setCharacters] = useState([]);
@@ -86,15 +86,12 @@ function App() {
    setCharacters(characters.filter((character) => character.id !== id));
   }
 
-  console.log('useLocation, useLocation', useLocation());
-
   const random = () => {
    const randomId = Math.floor(Math.random() * 825) + 1;
    onSearch(randomId);
   };
 
   const login = (data) => {
-    console.log('login', data);
 
     if (data.email === access.email && data.password === access.password) {
       access.isLoged = true;
@@ -115,7 +112,7 @@ function App() {
 
   return (
     <div className='App'>
-      {pathname !== '/' && <SearchBar onSearch={onSearch} logout={logout} /> }
+      {pathname !== '/' && <Nav onSearch={onSearch} logout={logout} /> }
       {/* <Cards 
          characters={characters} 
          onClose={onClose}
