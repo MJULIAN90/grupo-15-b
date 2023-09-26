@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 
-export default function SearchBar({onSearch}) {
+import Nav from '../Nav';
+
+export default function SearchBar({onSearch, logout}) {
 
    const [id, setId] = useState('');
 
@@ -47,6 +50,11 @@ export default function SearchBar({onSearch}) {
          >
             Agregar
          </button>
+
+      <Link to={'/about'}>
+        <button onClick={logout}>Logout</button>
+      </Link>
+         {/* <Nav logout={logout} /> */}
       </div>
    );
 }

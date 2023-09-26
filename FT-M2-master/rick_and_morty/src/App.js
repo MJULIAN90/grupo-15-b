@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import {Routes, Route} from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 
 //  Cuando en nuestra carpeta tenemos un archivo llamado index.js, no hace falta especificar el nombre del archivo, ya que por defecto, si no se especifica, se importa el index.js
 import Cards from "./components/Cards";
@@ -11,9 +11,28 @@ import SearchBar from "./components/SearchBar";
 import "./App.css";
 import About from "./components/About";
 import Detail from "./components/Details";
+import Form from "./components/Form";
 
+const access = {
+  email: 'prueba@hola.com',
+  password: '123456',
+  isLoged: false,
+}
 
 function App() {
+  // si quisieramos usar un custom hook, lo llamariamos asi:
+  // const {
+  //   characters,
+  //   onSearch,
+  //   onClose,
+  //   random,
+  //   login,
+  //   logout,
+  //   pathname,
+  // } = useApp();
+  
+  const { pathname } =  useLocation();
+  const navigate = useNavigate();
   const [characters, setCharacters] = useState([]);
 
   const onSearch = async (id) => {
@@ -67,19 +86,42 @@ function App() {
    setCharacters(characters.filter((character) => character.id !== id));
   }
 
+  console.log('useLocation, useLocation', useLocation());
+
   const random = () => {
    const randomId = Math.floor(Math.random() * 825) + 1;
    onSearch(randomId);
   };
 
+  const login = (data) => {
+    console.log('login', data);
+
+    if (data.email === access.email && data.password === access.password) {
+      access.isLoged = true;
+      navigate('/home');
+    } else {
+      window.alert('Usuario o contraseña incorrectos');
+    }
+  }
+
+  const logout = () => {
+    access.isLoged = false;
+    navigate('/');
+  }
+
+  useEffect(() => {
+    !access.isLoged && navigate('/');
+  }, [access, navigate]);
+
   return (
     <div className='App'>
-      <Nav onSearch={onSearch} />
+      {pathname !== '/' && <SearchBar onSearch={onSearch} logout={logout} /> }
       {/* <Cards 
          characters={characters} 
          onClose={onClose}
       /> */}
       <Routes>
+        <Route path='/' element={<Form loginUser={login} />} />
         <Route path='/home' 
           element={
             <Cards characters={characters} onClose={onClose} />
