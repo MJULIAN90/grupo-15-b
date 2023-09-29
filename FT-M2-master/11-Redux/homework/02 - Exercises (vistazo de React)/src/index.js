@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import Counter from './components/Counter';
+import Counter2 from './components/Counter2';
 import counter from './reducers';
 
 // Esta línea instancia nuestro store central de Redux.
@@ -19,6 +20,7 @@ const store = createStore(counter);
 ReactDOM.render(
   <Provider store={store}>
     <Counter />
+    <Counter2 />
   </Provider>,
   document.getElementById('root')
 );

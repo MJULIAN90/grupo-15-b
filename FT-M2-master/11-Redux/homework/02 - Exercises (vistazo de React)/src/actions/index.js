@@ -8,8 +8,21 @@ export const DECREMENT = 'DECREMENT';
 
 export const increment = () => {
   // Completa la funcion
+  return {
+    type: INCREMENT,
+  }
 };
 
 export const decrement = () => {
   // Completa la funcion
-};
+  return {
+    type: DECREMENT
+  }
+}
+
+export const incrementCounter2 = () => {
+  // Completa la funcion
+  return {
+    type: "INCREMENT2"
+  }
+}
