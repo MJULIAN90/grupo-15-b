@@ -140,7 +140,7 @@ Para hacerlo, empecemos repasando las ideas principiales que tenemos que impleme
 - Los usuarios disparan **acciones** que describen qué sucedió.
 - Un _nuevo estado_ es generado, resultado de combinar el _viejo estado_ y la _acción_ del usuario. Este proceso lo realiza una función llamada **reducer**.
 
-![Diagrama Redux](/_src/assets/12-React-Redux/redux----redux-diagram.png)
+![Diagrama Redux](../_src/assets/12-React-Redux/redux----redux-diagram.png)
 
 ### Reducers
 
@@ -387,7 +387,7 @@ Lo primero que tenemos que incorporar para trabajar con Redux, es el workflow qu
 
 > Se podría considerar a `redux` cómo una implementación del patrón `flux` para react, también se podría considerar cómo un patrón por si mismo. ( De hecho, [ni sus autores se ponen de acuerdo en eso](http://redux.js.org/docs/introduction/PriorArt.html#flux) ) Lo cierto es que está influenciado por el patrón `flux`, usando por facebook.
 
-![WorkFlow](/_src/assets/12-React-Redux/ui_workflow.png)
+![WorkFlow](../_src/assets/12-React-Redux/ui_workflow.png)
 
 1. El `árbol de Estado` define la UI y las acciones posibles a través de `props`.
 2. Acciones realizadas por los usuarios son enviadas a un `action creator` que las normaliza.
