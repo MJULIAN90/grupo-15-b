@@ -12,6 +12,7 @@ import "./App.css";
 import About from "./components/About";
 import Detail from "./components/Details";
 import Form from "./components/Form";
+import Favorites from "./components/Favorites";
 
 const access = {
   email: 'prueba@hola.com',
@@ -119,6 +120,7 @@ function App() {
       /> */}
       <Routes>
         <Route path='/' element={<Form loginUser={login} />} />
+        <Route path='/favorites' element={<Favorites />} />
         <Route path='/home' 
           element={
             <Cards characters={characters} onClose={onClose} />
