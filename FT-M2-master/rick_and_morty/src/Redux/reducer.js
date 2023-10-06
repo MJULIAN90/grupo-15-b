@@ -1,7 +1,8 @@
-import { ADD_FAV, REMOVE_FAV } from './actions-types';
+import { ADD_FAV, FILTER, ORDER, REMOVE_FAV } from './actions-types';
 
 const initialState = {
   myFavorites: [],
+  allCharacters: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -9,10 +10,11 @@ const rootReducer = (state = initialState, action) => {
     case ADD_FAV:
       return {
         ...state,
-        // concat
-        myFavorites: state.myFavorites.concat(action.payload),
         // spread operator
         // myFavorites: [...state.myFavorites, action.payload],
+        // concat
+        allCharacters: state.allCharacters.concat(action.payload),
+        myFavorites: state.myFavorites.concat(action.payload),
       };
 
     case REMOVE_FAV:
@@ -29,6 +31,27 @@ const rootReducer = (state = initialState, action) => {
 
       };
 
+    case FILTER: 
+      return{
+        ...state,
+        myFavorites: state.allCharacters.filter((character) => character.gender === action.payload)
+      }
+
+    case ORDER:
+      console.log(action.payload);
+      if (action.payload === "A"){
+        return {
+          ...state,
+          // myFavorites: state.allCharacters.sort((a, b) => a.name.localeCompare(b.name))
+          myFavorites: state.allCharacters.sort((a, b) => a.name > b.name ? 1 : -1)
+        }
+      } else{
+        return {
+          ...state,
+          // myFavorites: state.allCharacters.sort((a, b) => b.name.localeCompare(a.name))
+          myFavorites: state.allCharacters.sort((a, b) => b.name > a.name ? 1 : -1)
+        }
+      }
     default:
       return state;
   }
